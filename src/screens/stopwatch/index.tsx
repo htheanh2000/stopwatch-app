@@ -42,7 +42,6 @@ const StopWatch: FunctionComponent = () => {
     }
 
     const onPressDelete = (item: number) => {
-        console.log("onPress Delete");
         setTimeList(timeList => timeList.filter(ele => ele !== item))
     }
 
