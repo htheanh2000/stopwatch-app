@@ -14,13 +14,21 @@ export const itemView: ViewStyle = {
     borderRadius:25,
     justifyContent:'center',
     padding: 20,
-    margin:10,
+    margin:5,
     backgroundColor: '#fff'
 }
 
 export const flatView: ViewStyle = {
     width: '100%',
+    justifyContent:'space-between',
     flex: 1,
     alignItems:'center',
-    paddingBottom: 80
+    paddingBottom: 100
+}
+
+export const delIcon: ViewStyle = {
+   position:'absolute',
+   right: 30,
+   top: 30,
+   zIndex: 1,
 }

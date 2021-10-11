@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useRef, useState, createRef } from "react";
-import { FlatList, View } from "react-native";
-import { Screen, Timer, Button, Text } from '@/components'
+import { FlatList, View, TouchableWithoutFeedback, TouchableOpacityBase, TouchableOpacity } from "react-native";
+import { Screen, Timer, Button, Text, Icon } from '@/components'
 import * as styles from './styles'
 import { ITimerRefs } from '@/components'
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import {timeConverter} from '@/helper/time'
+import { timeConverter } from '@/helper/time'
 type IStatus = 'RUNNING' | "PAUSING"
 const StopWatch: FunctionComponent = () => {
     const insets = useSafeAreaInsets()
@@ -41,6 +41,11 @@ const StopWatch: FunctionComponent = () => {
         flatRef.current?.scrollToEnd()
     }
 
+    const onPressDelete = (item: number) => {
+        console.log("onPress Delete");
+        setTimeList(timeList => timeList.filter(ele => ele !== item))
+    }
+
     interface ItemProps {
         item: number,
         index: number
@@ -49,7 +54,14 @@ const StopWatch: FunctionComponent = () => {
         const { item, index } = props
         return (
             <View style={styles.itemView}>
-                <Text fontWeight='bold' fontSize={16} paddingBottom={12} >LAP {index+1}</Text>
+                <TouchableWithoutFeedback onPress={() => onPressDelete(item)}>
+                    <View style={styles.delIcon}>
+                        <Icon name='RedDelete' />
+                    </View>
+                </TouchableWithoutFeedback>
+
+
+                <Text fontWeight='bold' fontSize={16} paddingBottom={20} >LAP {index + 1}</Text>
                 <Text isClockFont fontSize={20} fontWeight='bold' >{timeConverter(item)}</Text>
             </View>
         )
@@ -62,10 +74,10 @@ const StopWatch: FunctionComponent = () => {
                 <FlatList
                     ref={flatRef}
                     alwaysBounceVertical={true}
-                    directionalLockEnabled = {true}
+                    directionalLockEnabled={true}
                     horizontal={false}
-                    showsHorizontalScrollIndicator= {false}
-                    showsVerticalScrollIndicator= {false}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     scrollEnabled={true}
                     numColumns={2}
                     data={timeList}
