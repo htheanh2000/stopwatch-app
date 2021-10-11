@@ -44,7 +44,7 @@ const Timer = forwardRef<ITimerRefs, IProps>((props, ref) => {
 
     return (
         <View style={styles.timerView}>
-            <Text fontSize={36}>{timeConverter(timeStart)}</Text>
+            <Text isClockFont fontSize={56}>{timeConverter(timeStart)}</Text>
         </View>
     )
 })

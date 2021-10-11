@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Text } from 'react-native'
+import { Text, TextStyle, ViewStyle } from 'react-native'
 import { LIGHT_THEME } from '@/constants/color'
 interface IProps {
     status?: 'NORMAL' | 'DEACTIVE' | string
@@ -7,11 +7,12 @@ interface IProps {
     fontSize?: number
     paddingHorizontal?: number
     paddingBottom?: number
-    fontWeight?: '100' | '200' | '300'| '400'| '500'| '600'| '700' | '800' | 'bold' | 'normal'
+    isClockFont?: boolean
+    fontWeight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | 'bold' | 'normal'
 }
 
 const CustomText: FunctionComponent<IProps> = (props) => {
-    const { status, children, color, fontSize, paddingHorizontal,paddingBottom,fontWeight } = props
+    const { status, children, color, fontSize, paddingHorizontal, paddingBottom, fontWeight,isClockFont } = props
 
     const getColor = () => {
         if (color) return color
@@ -26,8 +27,16 @@ const CustomText: FunctionComponent<IProps> = (props) => {
                 return LIGHT_THEME.TEXT_DEACTIVE_COLOR
         }
     }
+    const textStyle:TextStyle = {
+        color: getColor(),
+        fontWeight: fontWeight,
+        fontSize,
+        paddingHorizontal,
+        paddingBottom,
+    }
+
     return (
-        <Text style={{ color: getColor(), fontWeight: fontWeight, fontSize, paddingHorizontal,paddingBottom }}>{children}</Text>
+        <Text style={[textStyle, isClockFont && {fontFamily: 'Digital-7 Mono'}]}>{children}</Text>
     )
 }
 
@@ -36,7 +45,8 @@ CustomText.defaultProps = {
     fontSize: 16,
     paddingHorizontal: 0,
     paddingBottom: 0,
-    fontWeight: '600'
+    fontWeight: '600',
+    isClockFont: false
 }
 
 export default CustomText

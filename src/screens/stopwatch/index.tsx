@@ -49,8 +49,8 @@ const StopWatch: FunctionComponent = () => {
         const { item, index } = props
         return (
             <View style={styles.itemView}>
-                <Text fontWeight='400' fontSize={20} paddingBottom={12} >No.{index+1}</Text>
-                <Text fontWeight='600' >{timeConverter(item)}</Text>
+                <Text fontWeight='bold' fontSize={16} paddingBottom={12} >LAP {index+1}</Text>
+                <Text isClockFont fontSize={20} fontWeight='bold' >{timeConverter(item)}</Text>
             </View>
         )
     };
@@ -73,7 +73,7 @@ const StopWatch: FunctionComponent = () => {
                     keyExtractor={(item) => item.toString()}
                 />
             </View>
-            <View style={[styles.controlView, { bottom: insets.bottom }]}>
+            <View style={[styles.controlView, { bottom: insets.bottom + 20 }]}>
                 <Button onPress={onPressControl} status='ACTIVE'>{status === 'PAUSING' ? 'Start' : 'Tick'}</Button>
                 <Button onPress={onPressReset} status='DEACTIVE'>Reset</Button>
             </View>
