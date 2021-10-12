@@ -24,6 +24,6 @@ const {name, size} = props
 };
 
 IconComponent.defaultProps = {
-  size: 100
+  size: undefined
 }
 export default IconComponent;

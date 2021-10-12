@@ -6,10 +6,16 @@ import { ITimerRefs } from '@/components'
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { timeConverter } from '@/helper/time'
 type IStatus = 'RUNNING' | "PAUSING"
+
+interface ITime {
+    id: number
+    time: number
+}
+
 const StopWatch: FunctionComponent = () => {
     const insets = useSafeAreaInsets()
     const timerRef = createRef<ITimerRefs>()
-    const [timeList, setTimeList] = useState<number[]>([])
+    const [timeList, setTimeList] = useState<ITime[]>([])
     const [status, setStatus] = useState<IStatus>('PAUSING')
     const onPressReset = () => {
         setStatus('PAUSING')
@@ -36,17 +42,22 @@ const StopWatch: FunctionComponent = () => {
     }
 
     const onPressTick = () => {
-        const newTime = timerRef?.current?.getTime() || 0
+        const newTime = {
+            id: timeList.length + 1,
+            time: timerRef?.current?.getTime() || 0
+        }
         setTimeList([...timeList, newTime])
-        flatRef.current?.scrollToEnd()
+        setTimeout(()=> {
+            flatRef.current?.scrollToEnd()
+        }, 0)
     }
 
-    const onPressDelete = (item: number) => {
-        setTimeList(timeList => timeList.filter(ele => ele !== item))
+    const onPressDelete = (item: ITime) => {
+        setTimeList(timeList => timeList.filter(ele => ele.id !== item.id))
     }
 
     interface ItemProps {
-        item: number,
+        item: ITime,
         index: number
     }
     const renderItem = (props: ItemProps) => {
@@ -55,11 +66,11 @@ const StopWatch: FunctionComponent = () => {
             <View style={styles.itemView}>
                 <TouchableWithoutFeedback onPress={() => onPressDelete(item)}>
                     <View style={styles.delIcon}>
-                        <Icon name='RedDelete' />
+                        <Icon size={15} name='RedDelete' />
                     </View>
                 </TouchableWithoutFeedback>
-                <Text fontWeight='bold' fontSize={16} paddingBottom={20} >LAP {index + 1}</Text>
-                <Text isClockFont fontSize={20} fontWeight='bold' >{timeConverter(item)}</Text>
+                <Text fontWeight='bold' fontSize={16} paddingBottom={20} >LAP {item.id}</Text>
+                <Text isClockFont fontSize={20} fontWeight='bold' >{timeConverter(item.time)}</Text>
             </View>
         )
     };
@@ -79,7 +90,7 @@ const StopWatch: FunctionComponent = () => {
                     numColumns={2}
                     data={timeList}
                     renderItem={renderItem}
-                    keyExtractor={(item) => item.toString()}
+                    keyExtractor={(item) => item.id.toString()}
                 />
             </View>
             <View style={[styles.controlView, { bottom: insets.bottom + 20 }]}>

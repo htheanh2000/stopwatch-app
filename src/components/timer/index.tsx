@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import * as styles from './styles'
 import Text from '../text'
 import {timeConverter} from '@/helper/time'
-import Icon from '../icon'
 interface IProps {
     time: number,
 }
