@@ -58,8 +58,6 @@ const StopWatch: FunctionComponent = () => {
                         <Icon name='RedDelete' />
                     </View>
                 </TouchableWithoutFeedback>
-
-
                 <Text fontWeight='bold' fontSize={16} paddingBottom={20} >LAP {index + 1}</Text>
                 <Text isClockFont fontSize={20} fontWeight='bold' >{timeConverter(item)}</Text>
             </View>
