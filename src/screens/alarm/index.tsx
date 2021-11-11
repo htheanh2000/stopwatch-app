@@ -8,6 +8,7 @@ import Modal from "react-native-modalbox";
 import * as mainStyle from '@/constants/style'
 import DatePicker from 'react-native-date-picker'
 import moment from 'moment'
+import PushNotification from 'react-native-push-notification';
 
 
 interface IAlarm {
@@ -212,6 +213,20 @@ const Alarm: FunctionComponent = () => {
                 return '#0b0b0c'
         }
     }
+
+    const createNotification = () => {
+        const soundName = 'sound.mp3'
+        PushNotification.localNotificationSchedule({
+            //... You can use all the options from localNotifications
+            title: 'Báo thức',
+            message: "Báo thức hí hí", // (required)
+            date: new Date(Date.now() + 1 * 1000), // in 60 secs
+            allowWhileIdle: true, // (optional) set notification to work while on doze, default: false
+            soundName: soundName,
+          });
+          
+    }
+
     return (
         <Screen>
             <FlatList
@@ -222,7 +237,7 @@ const Alarm: FunctionComponent = () => {
                 renderItem={renderItem}
             />
             <View style={styles.buttonView}>
-                <Button onPress={onPressAdd}>Add</Button>
+                <Button onPress={createNotification}>Add</Button>
             </View>
             <Modal
                 isOpen={modalVisible} position={"bottom"} entry={"bottom"} backdropOpacity={0} swipeToClose={true}

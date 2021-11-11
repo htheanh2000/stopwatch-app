@@ -18,6 +18,7 @@
 		7EF68E3733C33B6898317E18 /* libPods-stopwatch-stopwatchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-stopwatch-stopwatchTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C702562E36384157852CFE17 /* clock-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C36DB2D6BC946BB90EFBDC9 /* clock-mono.ttf */; };
+		CEAD5933271682B90076E6C2 /* sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEAD5932271682B90076E6C2 /* sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-stopwatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stopwatch.debug.xcconfig"; path = "Target Support Files/Pods-stopwatch/Pods-stopwatch.debug.xcconfig"; sourceTree = "<group>"; };
 		CAB24C56546E424F94AF3157 /* clock-italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "clock-italic.ttf"; path = "../src/assets/fonts/clock-italic.ttf"; sourceTree = "<group>"; };
 		CE1C55252715D30B0075951F /* stopwatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = stopwatch.entitlements; path = stopwatch/stopwatch.entitlements; sourceTree = "<group>"; };
+		CEAD5932271682B90076E6C2 /* sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound.mp3; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-stopwatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stopwatch.release.xcconfig"; path = "Target Support Files/Pods-stopwatch/Pods-stopwatch.release.xcconfig"; sourceTree = "<group>"; };
 		E9A2A827941046648BF7E5B9 /* clock.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = clock.ttf; path = ../src/assets/fonts/clock.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB24C56546E424F94AF3157 /* clock-italic.ttf */,
+				CEAD5932271682B90076E6C2 /* sound.mp3 */,
 				ADD46C9B2C32494B9D6E68EB /* clock-mono-italic.ttf */,
 				1C36DB2D6BC946BB90EFBDC9 /* clock-mono.ttf */,
 				E9A2A827941046648BF7E5B9 /* clock.ttf */,
@@ -268,6 +271,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				610603428DE24963A894808A /* clock-italic.ttf in Resources */,
 				6F24573AEAF64BEA99F40BED /* clock-mono-italic.ttf in Resources */,
+				CEAD5933271682B90076E6C2 /* sound.mp3 in Resources */,
 				C702562E36384157852CFE17 /* clock-mono.ttf in Resources */,
 				16FD6A1F35414C6DB08C080D /* clock.ttf in Resources */,
 			);
